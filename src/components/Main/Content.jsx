@@ -3,7 +3,7 @@ import axios from "axios"
 import UpLoad from '../PostReg/upload';
 import { Link } from "react-router-dom";
 
-function Content(props){
+function Content({pfUser,setPfUser,mainImg,i}){
     const [comment, setComment] = useState(null)
 
     // 댓글
@@ -30,7 +30,7 @@ function Content(props){
     // })
     return (
         <>
-         <article className="post">
+    <article className="post">
     <div className="post__header">
       <div className="post__profile">
         <Link to="#" className="post__avatar">
@@ -43,7 +43,7 @@ function Content(props){
     </div>
     <div className="post__content">
       <div className="post__medias" >
-      <img src={props.mainImg[props.i].thumbnailUrl} alt="" />
+      <img src={mainImg[i].thumbnailUrl} alt="" />
       </div>
     </div>
     <div className="post__footer">
@@ -60,10 +60,10 @@ function Content(props){
       </div>
       <div className="post__infos">
         <div className="post__title">
-          <span>{props.mainImg[props.i].title}</span>
+          <span>{mainImg[i].title}</span>
         </div>
         <div className="post__description">
-          <span>{props.mainImg[props.i].title}</span>
+          <span>{mainImg[i].title}</span>
         </div>
         <div className="post__border">
         </div>

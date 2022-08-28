@@ -11,7 +11,12 @@ function Login() {
 	// 로그인 Form
   const [email,setEmail] = useState('');
   const [pw,setPw] = useState('');
+  const [rgEmail, setRgEmail] = useState(''); // rg = Register
+  const [rgPw, setRgPw] = useState('');
+  const [rgName, setRgName] = useState('');
+  const [rgTel, setRgTel] = useState('');
 
+  
   const onEmailHandler = e =>{
     setEmail(e.currentTarget.value)
   }
@@ -21,13 +26,6 @@ function Login() {
   const onSubmit = e => {
     e.preventDefault();
   }
-
-  // 회원가입 Form
-  const [rgEmail, setRgEmail] = useState(''); // rg = Register
-  const [rgPw, setRgPw] = useState('');
-  const [rgName, setRgName] = useState('');
-  const [rgTel, setRgTel] = useState('');
-
   const onRgEmailHandler = (e) => {
       setRgEmail(e.currentTarget.value)
   }
@@ -63,7 +61,7 @@ function Login() {
 
 
 
-  // 회원가입 fetch
+  // 회원가입 fetch로 확인
   const signUp = (e) => {
     e.preventDefault()
     fetch('/user/signUp', {

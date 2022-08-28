@@ -13,16 +13,19 @@ import Content from './Content';
 
 function Main(){
 const [mainImg,setMainImg] = useState([])
+// ProfileUser
+const [pfUser, setPfUser] = useState([])
+
+// Profile User
 
 
 // 이미지 받아오기
 useEffect(()=>{
   axios.get('https://jsonplaceholder.typicode.com/photos?id=1&id=2&id=3&id=4')
-  // axios.get('https://jsonplaceholder.typicode.com/photos?id=2')
   .then(res =>{
     setMainImg([...res.data])
   })
-},[])
+},[mainImg])
 
 
 return (
@@ -37,7 +40,13 @@ return (
         <div className="posts">
           {/* Content */}
           {
-            mainImg.map((a,i)=><Content key={a.id}mainImg={mainImg} i={i}></Content>)
+            mainImg.map((a,i)=><Content 
+            key={a.id}
+            mainImg={mainImg} 
+            i={i}
+            pfUser={pfUser}
+            setPfUser={setPfUser}
+            ></Content>)
           } 
         </div>
       </div>
@@ -52,7 +61,7 @@ return (
   <Footer></Footer>
 
   {/* Sidebar --> */}
-  <Sidebar></Sidebar>
+  <Sidebar pfUser={pfUser} setPfUser={setPfUser}></Sidebar>
 </>
 )
 }

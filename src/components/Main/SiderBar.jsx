@@ -2,25 +2,31 @@ import sideToggle from './sideToggle';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-function Sidebar(){
+function Sidebar({pfUser,setPfUser}){
 
 	const navigate = useNavigate()
 
 
-// Logout
-const onLogout = () =>{
-	axios.get('')
+	// Logout
+	const onLogout = () =>{
+		axios.get('')
+			.then(res=>{
+				if(res.status === 200){
+					localStorage.removeItem('token')
+					navigate('/')
+				}
+			})
+	}
+
+	const userProfile = ()=>{
+		axios.get('https://jsonplaceholder.typicode.com/users/1')
 		.then(res=>{
-			if(res.status === 200){
-				localStorage.removeItem('token')
-				navigate('/')
-			}
-		})
+			setPfUser(res.data)
+			console.log(setPfUser)
+		},[])
 }
-
-// Profile User
-
 return (
 <>
 	<nav className="sidebar close" id="nav">
@@ -30,11 +36,14 @@ return (
 					<img src="assets/Main/user.png" alt="" />
 				</span>
 				<div className="text logo-text">
-					<span className="name">User1</span>
+					<span className="name">{pfUser.name}</span>
 					<span className="profession">Welcome</span>
 				</div>
 			</div>
-			<i className="bx bx-chevron-right toggle" id="close" onClick={sideToggle}></i>
+			<i className="bx bx-chevron-right toggle" id="close" onClick={(e)=>{
+				sideToggle(e)
+				userProfile(e)
+			}}></i>
 		</header>
 
 

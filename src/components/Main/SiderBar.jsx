@@ -1,12 +1,25 @@
 import sideToggle from './sideToggle';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Sidebar(){
 
+	const navigate = useNavigate()
+
+
+// Logout
 const onLogout = () =>{
-// localStorage에 있는 item삭제
-localStorage.removeItem('token')
-document.location.href = '/'
+	axios.get('')
+		.then(res=>{
+			if(res.status === 200){
+				localStorage.removeItem('token')
+				navigate('/')
+			}
+		})
 }
+
+// Profile User
 
 return (
 <>
@@ -33,46 +46,46 @@ return (
 				</li>
 				<ul className="menu-links">
 					<li className="nav-link">
-						<a href="#">
+						<Link to = "#">
 							<i className="bx bx-home-alt icon"></i>
 							<span className="text nav-text">Home</span>
-						</a>
+						</Link>
 					</li>
 					<li className="nav-link">
-						<a href="#">
+						<Link to = "#">
 							<i className='bx bx-group icon'></i>
 							<span className="text nav-text">Group</span>
-						</a>
+						</Link>
 					</li>
 					<li className="nav-link">
-						<a href="#">
+						<Link to ="#">
 							<i className='bx bx-bell icon'></i>
 							<span className="text nav-text">Notifications</span>
-						</a>
+						</Link>
 					</li>
 					<li className="nav-link">
-						<a href="#">
+						<Link to = "#">
 							<i className='bx bx-news icon'></i>
 							<span className="text nav-text">News</span>
-						</a>
+						</Link>
 					</li>
 					<li className="nav-link">
-						<a href="#">
+						<Link to ="#">
 							<i className='bx bx-heart icon'></i>
 							<span className="text nav-text">Likes</span>
-						</a>
+						</Link>
 					</li>
 					<li className="nav-link">
-						<a href="#">
+						<Link to ="#">
 							<i className='bx bx-calendar-event icon'></i>
 							<span className="text nav-text">Event</span>
-						</a>
+						</Link>
 					</li>
 					<li>
-						<a href="#">
+						<div onClick={onLogout}>
 							<i className="bx bx-log-out icon"></i>
-							<span className="text nav-text" onClick={onLogout}>Logout</span>
-						</a>
+							<span className="text nav-text">Logout</span>
+						</div>
 					</li>
 				</ul>
 			</div>

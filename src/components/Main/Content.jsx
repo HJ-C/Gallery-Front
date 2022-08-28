@@ -10,6 +10,7 @@ function Content(props){
     const onCommentHandler = (e) =>{
       setComment(e.currentTarget.value)
     }
+		
     const commentSubmit = () => {
       axios.post('',{
         comment : comment
@@ -22,6 +23,7 @@ function Content(props){
       .then(result => console.log('결과: ', result));
     }
 
+	
     // id=1일 데이터 받아오기
     // const Pid = props.mainImg.filter((a,i) =>{
     //   return (a.id < 2)

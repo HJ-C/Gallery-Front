@@ -20,13 +20,7 @@ function Sidebar({pfUser,setPfUser}){
 			})
 	}
 
-	const userProfile = ()=>{
-		axios.get('https://jsonplaceholder.typicode.com/users/1')
-		.then(res=>{
-			setPfUser(res.data)
-			console.log(setPfUser)
-		},[])
-}
+
 return (
 <>
 	<nav className="sidebar close" id="nav">
@@ -42,7 +36,6 @@ return (
 			</div>
 			<i className="bx bx-chevron-right toggle" id="close" onClick={(e)=>{
 				sideToggle(e)
-				userProfile(e)
 			}}></i>
 		</header>
 

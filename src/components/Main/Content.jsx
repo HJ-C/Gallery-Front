@@ -36,7 +36,9 @@ function Content({pfUser,setPfUser,mainImg,i}){
         <Link to="#" className="post__avatar">
           <img src="assets/Main/user.png" alt="User Picture" />
         </Link>
-        <span>user1</span>
+        <span>
+          {pfUser.name}
+        </span>
         {/* <UpLoad></UpLoad> */}
         <UpLoad></UpLoad>
       </div>

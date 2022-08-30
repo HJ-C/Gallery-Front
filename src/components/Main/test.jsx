@@ -4,34 +4,37 @@ import { useEffect,useState } from 'react'
 import Test1 from './test1'
 
 function Test() {
-    const [ users, setUsers] = useState([])
-    const [a, setA] = useState("")
+    const [posts, setPosts] = useState([])
+    const [searchTitle, setSearchTitle] = useState("")
 
     useEffect(()=>{
-        axios.get('https://jsonplaceholder.typicode.com/users')
-            .then(res=>{
-                setUsers([...res.data])
-                console.log(res.data)
-            })
+        const loadPosts = async ()=>{
+            const response = await axios.get("https://jsonplaceholder.typicode.com/users")
+            setPosts(response.data)
+        }
+        loadPosts()
     },[])
 
-    const filterNames = e =>{
-        const search = e.target.value.toLowerCase()
-        const filteredNames = users.filter(names=> names.username.toLowerCase().includes(search))
-        setA(filteredNames)
-    }
   return (
-    <>
-    <div>
-        <input type='text' onChange={(e)=>{filterNames(e)}}></input>
-        <button>Search</button>
+
+    <div className='test'>
+        <h2>Search Filter</h2>
+        <input 
+            type="text" 
+            onChange={(e)=> setSearchTitle(e.target.value)}
+            />
         {
-            a.map((a,i)=>{
-                return <li key={a.id}>{a.username}</li>
+            posts
+                .filter( a => { 
+                if(searchTitle === ""){
+                    return a
+                }else if(
+                    a.username.toLowerCase().includes(searchTitle.toLowerCase()))
+                return a
             })
+                .map(item => <h5>{item.username}</h5>)
         }
     </div>
-    </>
   )
 }
 

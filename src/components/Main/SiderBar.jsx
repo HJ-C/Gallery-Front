@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-function Sidebar({pfUser,setPfUser}){
+function Sidebar({pfUser,setPfUser,setSearchTitle}){
 
 	const navigate = useNavigate()
 
@@ -51,7 +51,11 @@ return (
 			<div className="menu">
 				<li className="search-box">
 					<i className="bx bx-search icon"></i>
-					<input type="text" placeholder="Search..." />
+					<input 
+						type="text" 
+						placeholder="Search..." 
+						onChange={(e)=> setSearchTitle(e.target.value)}
+						/>
 				</li>
 				<ul className="menu-links">
 					<li className="nav-link">

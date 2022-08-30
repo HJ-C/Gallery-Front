@@ -19,7 +19,6 @@ function Content({pfUser,setPfUser,mainImg,i}){
           'Content-Type': 'application/json'
           }
       })
-      .then(res => res.json())
       .then(result => console.log('결과: ', result));
     }
 
@@ -31,6 +30,10 @@ function Content({pfUser,setPfUser,mainImg,i}){
     
     return (
         <>
+    <main className="main-container">
+    <section className="content-container">
+      <div className="content">
+        <div className="posts"> {/*4줄까지 */}
     <article className="post">
     <div className="post__header">
       <div className="post__profile">
@@ -96,7 +99,12 @@ function Content({pfUser,setPfUser,mainImg,i}){
       </div>
     </div>
   </article>
+  </div>
+      </div>
+    </section>
+  </main>
         </>
+
     )
 }
 

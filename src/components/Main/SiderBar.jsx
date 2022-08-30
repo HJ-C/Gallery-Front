@@ -20,7 +20,13 @@ function Sidebar({pfUser,setPfUser}){
 			})
 	}
 
-
+	const userProfile = ()=>{
+		axios.get('https://jsonplaceholder.typicode.com/users/1')
+		.then(res=>{
+			setPfUser(res.data.name)
+			console.log(setPfUser)
+		},[])
+}
 return (
 <>
 	<nav className="sidebar close" id="nav">
@@ -30,11 +36,12 @@ return (
 					<img src="assets/Main/user.png" alt="" />
 				</span>
 				<div className="text logo-text">
-					<span className="name">{pfUser.name}</span>
+					<span className="name">{pfUser}</span>
 					<span className="profession">Welcome</span>
 				</div>
 			</div>
 			<i className="bx bx-chevron-right toggle" id="close" onClick={(e)=>{
+				userProfile(e)
 				sideToggle(e)
 			}}></i>
 		</header>

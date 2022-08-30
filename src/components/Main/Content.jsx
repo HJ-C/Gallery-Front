@@ -28,6 +28,7 @@ function Content({pfUser,setPfUser,mainImg,i}){
     // const Pid = props.mainImg.filter((a,i) =>{
     //   return (a.id < 2)
     // })
+    
     return (
         <>
     <article className="post">

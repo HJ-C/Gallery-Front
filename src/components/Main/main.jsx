@@ -9,7 +9,6 @@ import Sidebar from './SiderBar';
 import SideMenu from './SideMenu';
 import MainHeader from './MainHeader';
 import Content from './Content';
-import Test from './test';
 
 
 function Main(){
@@ -22,17 +21,19 @@ const [searchTitle, setSearchTitle] = useState("")
 
 // 이미지 받아오기
 useEffect(()=>{
-  axios.get('https://jsonplaceholder.typicode.com/photos?id=1&id=2&id=3&id=4')
+  axios.get('https://jsonplaceholder.typicode.com/photos?id=1&id=2')
   .then(res =>{
     setMainImg([...res.data])
+    console.log(res.data)
   })
-},[mainImg])
+},[])
 
 // 검색목록
 useEffect(()=>{
   const searchBox = async ()=>{
-      const response = await axios.get("https://jsonplaceholder.typicode.com/photos?id=1&id=2&id=3&id=4")
+      const response = await axios.get("https://jsonplaceholder.typicode.com/photos?id=1&id=2")
       setPosts(response.data)
+      
   }
   searchBox()
 },[])
@@ -44,35 +45,29 @@ return (
   {/* Header*/}
   <MainHeader></MainHeader>
 
-
-
-  {/* Side Menu */}
-  <SideMenu></SideMenu>
-
-  {/* Footer */}
-  <Footer></Footer>
-  {/* Main Contents */}
-  <div className='test'>
-        <h2>Search Filter</h2>
+ {/* Main Contents */}
 
         {
-            posts
-                .filter( a => { 
-                if(searchTitle === ""){
-                    return a
-                }else if(
-                    a.title.toLowerCase().includes(searchTitle.toLowerCase()))
-                return a
-            })
-                .map((a,i)=><Content 
+            mainImg
+              .map((a,i)=><Content 
             key={a.id}
             mainImg={mainImg} 
             i={i}
             pfUser={pfUser}
             setPfUser={setPfUser}
-            ></Content>)
+            ></Content>
+            )
         }
-  </div>
+      {/* {
+                    posts
+                    .filter( a => { 
+                    if(searchTitle === ""){
+                        return a
+                    }else if(
+                        a.title.toLowerCase().includes(searchTitle.toLowerCase()))
+                    return a
+                })
+      } */}
 
   {/* Sidebar --> */}
   <Sidebar 
@@ -81,6 +76,13 @@ return (
     setSearchTitle={setSearchTitle}
     ></Sidebar>
 
+
+  {/* Side Menu */}
+  <SideMenu></SideMenu>
+
+  {/* Footer */}
+  <Footer></Footer>
+ 
 
 </>
 )

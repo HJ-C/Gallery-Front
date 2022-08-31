@@ -7,7 +7,7 @@ import './components/Main/main.css'
 import { Routes, Route } from 'react-router-dom'
 import UpLoad from './components/PostReg/upload';
 import Test from './components/Main/test';
-import Test1 from './components/Main/test1';
+
 
 
 
@@ -19,7 +19,6 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/upload" element={<UpLoad></UpLoad>}></Route>
         <Route path="/test" element={<Test></Test>}></Route>
-        <Route path="/test1" element={<Test1></Test1>}></Route>
       </Routes>
     </div>
   );

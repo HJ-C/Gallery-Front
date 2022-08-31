@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 import { useEffect,useState } from 'react'
-import Test1 from './test1'
 
 function Test() {
     const [posts, setPosts] = useState([])

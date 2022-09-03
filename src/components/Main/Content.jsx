@@ -2,9 +2,11 @@ import { useState } from "react"
 import axios from "axios"
 import UpLoad from '../PostReg/upload';
 import { Link } from "react-router-dom";
+import postCommentInFeed from './comment';
 
 function Content({pfUser,setPfUser,mainImg,i}){
-    const [comment, setComment] = useState(null)
+  
+    const [comment, setComment] = useState("")
 
     // 댓글
     const onCommentHandler = (e) =>{
@@ -86,13 +88,13 @@ function Content({pfUser,setPfUser,mainImg,i}){
             id="post_comment_input" 
             type="text" 
             placeholder="댓글 달기..." 
-            onChange={onCommentHandler}
+            // onChange={onCommentHandler}
             />
           <button 
             className="post_comment_btn"
-            onClick={commentSubmit}
+            // onClick={commentSubmit}
             >
-            <i className='bx bx-send'></i>
+            <i className='bx bx-send' ></i>
           </button>
         </section>
         <span className="post__date-time">more</span>

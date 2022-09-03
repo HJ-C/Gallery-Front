@@ -6,7 +6,7 @@ import postCommentInFeed from './comment';
 
 function Content({pfUser,setPfUser,mainImg,i}){
   
-    const [comment, setComment] = useState("")
+    const [comment, setComment] = useState("`1")
 
     // 댓글
     const onCommentHandler = (e) =>{

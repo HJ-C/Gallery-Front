@@ -80,6 +80,10 @@ function Content({pfUser,setPfUser,mainImg,i}){
         <div>
           <ul className="comment_list">
             <li>
+            <div class="user_desc">
+                <em>dlwlrmaa</em>
+                <span>우와 멋지다!!</span>
+                </div>
             </li>
           </ul>
         </div>

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import axios from "axios"
 import UpLoad from '../PostReg/upload';
 import { Link } from "react-router-dom";
@@ -24,7 +24,35 @@ function Content({pfUser,setPfUser,mainImg,i}){
       .then(result => console.log('결과: ', result));
     }
 
-	
+    useEffect(()=>{
+        const commentInput = document.getElementById('post_comment_input');
+        const commentPostBtn = document.getElementsByClassName('post_comment_btn')[0];
+      
+        // 댓글 입력시 요소 생성
+        const addNewComment = () => {
+          const newCommentLocation = document.getElementsByClassName('comment_list')[0];
+          const newComment = document.createElement('li');
+      
+          newComment.innerHTML = `
+            <div class="user_desc">
+              <em>iAmUser</em>
+              <span>${commentInput.value}</span>
+            </div>
+            <button><i class="far fa-heart fa-xs"></i></button>
+          `;
+      
+          newCommentLocation.appendChild(newComment);
+          commentInput.value = '';
+        }
+      
+        // 댓글 게시
+        commentPostBtn.addEventListener('click', () => {
+          if (commentInput.value) {
+            addNewComment();
+          }
+        })
+    },[])
+    
     // id=1일 데이터 받아오기
     // const Pid = props.mainImg.filter((a,i) =>{
     //   return (a.id < 2)
@@ -36,7 +64,7 @@ function Content({pfUser,setPfUser,mainImg,i}){
     <section className="content-container">
       <div className="content">
         <div className="posts"> {/*4줄까지 */}
-    <article className="post">
+    <article className="post" >
     <div className="post__header">
       <div className="post__profile">
         <Link to="#" className="post__avatar">
@@ -80,10 +108,6 @@ function Content({pfUser,setPfUser,mainImg,i}){
         <div>
           <ul className="comment_list">
             <li>
-            <div class="user_desc">
-                <em>dlwlrmaa</em>
-                <span>우와 멋지다!!</span>
-                </div>
             </li>
           </ul>
         </div>
@@ -108,7 +132,9 @@ function Content({pfUser,setPfUser,mainImg,i}){
   </div>
       </div>
     </section>
+    
   </main>
+  
         </>
 
     )

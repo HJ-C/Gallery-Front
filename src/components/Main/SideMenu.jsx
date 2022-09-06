@@ -15,6 +15,7 @@ return(
 			<div className="side-menu__title-header">
 				<h2>전체 게시글</h2>
 				<button>+</button>
+				
 			</div>
 			{/* Side Contents */}
 			<SideContents></SideContents>

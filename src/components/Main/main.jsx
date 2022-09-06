@@ -52,6 +52,7 @@ return (
               .map((a,i)=><Content 
             key={a.id}
             mainImg={mainImg} 
+            setMainImg={setMainImg}
             i={i}
             pfUser={pfUser}
             setPfUser={setPfUser}

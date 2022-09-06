@@ -83,6 +83,7 @@ return (
 					<div className="popup_contents">
 						<div className="popup_photoarea">
 							<div className="filebox">
+								
 								<label htmlFor="file">+</label>
 								{/* 파일찾기 */}
 

@@ -2,13 +2,12 @@ import { useState,useEffect } from "react"
 import axios from "axios"
 import UpLoad from '../PostReg/upload';
 import { Link } from "react-router-dom";
-import postCommentInFeed from './comment';
 
-function Content({pfUser,mainImg,i}){
+function Content({pfUser,mainImg,setMainImg,i}){
   const [comment, setComment] = useState('');
   const [commentArray, setCommentArray] = useState([]);
 
-  const onSubmit = e => {
+  const commentSubmit = e => {
     e.preventDefault();
     if (comment === '') {
       return;
@@ -17,33 +16,22 @@ function Content({pfUser,mainImg,i}){
     setComment('');
   };
 
-  const onChange = event => {
-    setComment(event.target.value);
+  const handleComment = e => {
+    setComment(e.target.value);
   }
-  // useEffect(()=>{
-  //   axios.get('https://jsonplaceholder.typicode.com/comments?postId=1')
-  //     .then((res)=>{
-  //       console.log(res.data)
-  //       setComment([...res.data])
-  //     })
-  // },[])
-  
-// 댓글
-// const onCommentHandler = (e) =>{
-//   setComment(e.currentTarget.value)
-// }
-    
-// const commentSubmit = () => {
-//   axios.post('',{
-//     comment : comment
-//   },{
-//     headers: {
-//       'Content-Type': 'application/json'
-//       }
-//   })
-//   .then(result => console.log('결과: ', result));
-// }
 
+const onCommentSubmit = () =>{
+  axios.post('',{
+    comment : comment,
+  },{
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(res=>{
+    console.log(res.data)
+  })
+}
 
 
 
@@ -68,7 +56,7 @@ function Content({pfUser,mainImg,i}){
           {pfUser.name}
         </span>
         {/* <UpLoad></UpLoad> */}
-        <UpLoad></UpLoad>
+        <UpLoad mainImg={mainImg} setMainImg={setMainImg}></UpLoad>
       </div>
     </div>
     <div className="post__content">
@@ -88,7 +76,7 @@ function Content({pfUser,mainImg,i}){
           <img src="assets/Main/more_btn.png" alt="" />
         </button>
       </div>
-      <div className="post__infos" onSubmit={onSubmit}>
+      <div className="post__infos" onSubmit={commentSubmit}>
         <div className="post__title">
           <span>{mainImg[i].title}</span>
         </div>
@@ -102,9 +90,9 @@ function Content({pfUser,mainImg,i}){
         <!-- 댓글 --> */}
      <div>
       <ul className="comment_list">
-      {commentArray.map((value, id) => (
-            <li key={id}>
-              <div class="user_desc">
+      {commentArray.map((value,i) => (
+            <li key={i}>
+              <div className="user_desc">
                 <em>iAmUser</em>
                 <span>{value}</span>
               </div>
@@ -119,11 +107,11 @@ function Content({pfUser,mainImg,i}){
             type="text" 
             placeholder="댓글 달기..." 
             value={comment}
-            onChange={onChange}
+            onChange={handleComment}
             />
           <button 
             className="post_comment_btn"
-            // onClick={commentSubmit}
+            onClick={onCommentSubmit}
             >
             <i className='bx bx-send' ></i>
           </button>

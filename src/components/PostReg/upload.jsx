@@ -1,20 +1,46 @@
 import {Link} from 'react-router-dom'
 import UpLoadForm from './upLoadForm';
+import axios from 'axios';
 
-function UpLoad(props){
+function UpLoad({mainImg,setMainImg}){
+
+	// 삭제
+	function del(){
+		if(window.confirm('삭제하시겠습니까')){
+			axios.delete('')
+			.then(res=>{
+				if(res.ok){
+					setMainImg({pid:0})
+				}
+			})
+	}
+	if (mainImg.pid === 0){
+		return null
+	}
+	}
+	
 
 return (
 <>
 	{/*Open 팝업*/}
-	<Link to="#" onClick={openPop}>
+
 	<div>
 		<button className="popup_start">
+			<Link to="#" onClick={openPop}>
 			<span className="material-icons uploadtext">
 				add_circle_outline
 			</span>
+			</Link>
 		</button>
+		<button onClick={del}>
+		X
+		</button>
+
+		
+
 	</div>
-	</Link>
+
+
 	{/* 팝업 컨텐츠 영역*/}
 	<UpLoadForm></UpLoadForm>
 

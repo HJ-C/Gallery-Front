@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Toggle from "./toggle";
-import  {Link} from 'react-router-dom'
 import axios from "axios";
 import {useNavigate} from 'react-router-dom'
 
@@ -29,7 +28,6 @@ function Login() {
   const onRgEmailHandler = (e) => {
       setRgEmail(e.currentTarget.value)
   }
-
   const onRgPwHandler = (e) => {
       setRgPw(e.currentTarget.value)
   }

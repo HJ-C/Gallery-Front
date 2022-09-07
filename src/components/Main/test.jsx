@@ -5,7 +5,9 @@ import  axios  from 'axios';
 function Test(){
     return(
       <>
-      
+        <form>
+          <div>name: <input type='text'></input></div>
+        </form>
       </>
     )
 }

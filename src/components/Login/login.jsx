@@ -2,7 +2,8 @@ import { useState } from "react";
 import Toggle from "./toggle";
 import axios from "axios";
 import {useNavigate} from 'react-router-dom'
-
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Login() {
 
@@ -28,6 +29,7 @@ function Login() {
   const onRgEmailHandler = (e) => {
       setRgEmail(e.currentTarget.value)
   }
+
   const onRgPwHandler = (e) => {
       setRgPw(e.currentTarget.value)
   }
@@ -57,7 +59,23 @@ function Login() {
   })
   }
 
-
+  useEffect(()=>{
+      const container = document.getElementById("container");
+      const signIn = document.getElementById("sign-in");
+      const signUp = document.getElementById("sign-up");
+  
+      setTimeout(() => {
+      container.classList.add("sign-in");
+      }, 200);
+  
+      const toggle = () => {
+      container.classList.toggle("sign-in");
+      container.classList.toggle("sign-up");
+      };
+  
+      signIn.addEventListener("click", toggle);
+      signUp.addEventListener("click", toggle);
+  },[])
 
   // 회원가입 fetch로 확인
   const signUp = (e) => {
@@ -78,7 +96,7 @@ function Login() {
   
 	return ( 
 		<>
-    <div className="container" id="container" onLoad={Toggle}>
+    <div className="container" id="container">
 			<img src="/assets/Login/bg1.jpg"></img>
 
 	    {/* 회원가입 */}
@@ -207,7 +225,7 @@ function Icons(){
 	return(
 		<>
     <div className="align-center home-bg">
-    <i className='bx bxs-home' ></i>
+    <Link to ='/'><i className='bx bxs-home' ></i></Link>
     </div>   
 		<div className="align-center facebook-bg">
 			<i className="bx bxl-facebook"></i>

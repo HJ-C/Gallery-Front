@@ -2,18 +2,17 @@
 :root {
   --point: #9932CC;
 }
-/* popup start */
-.post__profile .popup_start{
-  right: 10px;
-  top : 20px;
-  }
 
 .post__header .material-icons {
-  display:flex;
     font-size: 25px;
     color: #9932CC;
-    }
-
+  }
+.post__header .popup_start{
+  display: flex;
+  margin-left: -30px;
+  flex-direction: row;
+  gap: 20px;
+}
 /* 토글 */
 .popup_layer.active {
   display: flex;

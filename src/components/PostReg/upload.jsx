@@ -24,19 +24,17 @@ return (
 <>
 	{/*Open 팝업*/}
 
-	<div>
+	<div className='post_btn'>
 		<button className="popup_start">
 			<Link to="#" onClick={openPop}>
 			<span className="material-icons uploadtext">
 				add_circle_outline
 			</span>
-			</Link>
+			</Link>	
+			<span className="material-icons deletetext" onClick={del}>
+				delete_outline
+			</span>
 		</button>
-		<button onClick={del}>
-		X
-		</button>
-
-		
 
 	</div>
 

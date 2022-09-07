@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+
 function MainHeader(){
     return(
         <>
@@ -20,7 +21,7 @@ function MainHeader(){
           <img src="/assets/Main/video_btn.png" alt="" />
         </Link>
         <button className="profile-button">
-          <div className="profile-button img">
+          <div className="profile-button img" >
             <Link to = "/login"><img src="/assets/main/user.png" alt="User Picture" /></Link>
           </div>
         </button>

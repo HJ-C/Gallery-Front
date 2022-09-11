@@ -1,5 +1,5 @@
 import sideToggle from './sideToggle';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 function Sidebar({pfUser,setPfUser,setSearchTitle}){
 
 	const navigate = useNavigate()
+
 
 
 	// Logout

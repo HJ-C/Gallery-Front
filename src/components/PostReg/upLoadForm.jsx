@@ -1,7 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 
-function UpLoadForm(props) {
+function UpLoadForm() {
 const [images, setImages] = useState([])
 const [title, setTitle] = useState('')
 const [content, setContent] = useState([])
@@ -63,7 +63,7 @@ const formData = new FormData()
 }
 
 return (
-<>
+<>	
 	<div className="popup_layer" id="popup_layer">
 		<div className="popup_box">
 			<form onSubmit={postSubmit}>

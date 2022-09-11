@@ -1,13 +1,15 @@
 import React from "react"
 import { useEffect, useState } from "react"
 import  axios  from 'axios';
+import { useParams } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 function Test(){
+
+  
     return(
       <>
-        <form>
-          <div>name: <input type='text'></input></div>
-        </form>
+        <Navigate to='/login'>이동</Navigate>
       </>
     )
 }

@@ -4,36 +4,45 @@ import UpLoad from '../PostReg/upload';
 import { Link } from "react-router-dom";
 
 function Content({pfUser,mainImg,setMainImg,i}){
-  const [comment, setComment] = useState('');
-  const [commentArray, setCommentArray] = useState([]);
-
-  const commentSubmit = e => {
-    e.preventDefault();
-    if (comment === '') {
-      return;
-    }
-    setCommentArray(a => [comment, ...a]);
-    setComment('');
-  };
-
-  const handleComment = e => {
-    setComment(e.target.value);
-  }
-
-const onCommentSubmit = () =>{
-  axios.post('',{
-    comment : comment,
-  },{
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(res=>{
-    console.log(res.data)
-  })
-}
+  const [comment, setComment] = useState([])
+//   const [comment, setComment] = useState('');
+//   const [commentArray, setCommentArray] = useState([]);
 
 
+//   const commentSubmit = e => {
+//     e.preventDefault();
+//     if (comment === '') {
+//       return;
+//     }
+//     setCommentArray(a => [comment, ...a]);
+//     setComment('');
+//   };
+
+//   const handleComment = e => {
+//     setComment(e.target.value);
+//   }
+
+//   // 댓글 post
+// const onCommentSubmit = () =>{
+//   axios.post('',{
+//     comment : comment,
+//   },{
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   })
+//   .then(res=>{
+//     console.log(res.data)
+//   })
+// }
+
+// // 댓글 get
+//   useEffect(()=>{
+//     axios.get(`http//localhost8080${Cid}`)
+//       .then(res=>{
+//         setComment(res.data) 
+//       })
+//   },[])
 
     // id=1일 데이터 받아오기
     // const Pid = props.mainImg.filter((a,i) =>{
@@ -76,7 +85,9 @@ const onCommentSubmit = () =>{
           <img src="assets/Main/more_btn.png" alt="" />
         </button>
       </div>
-      <div className="post__infos" onSubmit={commentSubmit}>
+
+      {/*  onSubmit={commentSubmit} */}
+      <div className="post__infos">
         <div className="post__title">
           <span>{mainImg[i].title}</span>
         </div>
@@ -88,7 +99,7 @@ const onCommentSubmit = () =>{
         </div>
         {/*
         <!-- 댓글 --> */}
-     <div>
+     {/* <div>
       <ul className="comment_list">
       {commentArray.map((value,i) => (
             <li key={i}>
@@ -99,19 +110,19 @@ const onCommentSubmit = () =>{
            </li>
          ))} 
       </ul>
-    </div> 
+    </div>  */}
       <form>
         <section className="post_comment_wrap" >
           <input 
             id="post_comment_input" 
             type="text" 
             placeholder="댓글 달기..." 
-            value={comment}
-            onChange={handleComment}
+            // value={comment}
+            // onChange={handleComment}
             />
           <button 
             className="post_comment_btn"
-            onClick={onCommentSubmit}
+            // onClick={onCommentSubmit}
             >
             <i className='bx bx-send' ></i>
           </button>

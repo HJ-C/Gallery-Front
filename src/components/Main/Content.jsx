@@ -7,6 +7,7 @@ function Content({pfUser,mainImg,setMainImg,i}){
 
   const [comment, setComment] = useState('');
   const [commentArray, setCommentArray] = useState([]);
+  const [commentArray1, setCommentArray1] = useState(['안녕']);
 
 
   const commentSubmit = e => {
@@ -14,7 +15,7 @@ function Content({pfUser,mainImg,setMainImg,i}){
     if (comment === '') {
       return;
     }
-    setCommentArray(a => [comment, ...a]);
+    setCommentArray(a => [comment,...a]);
     setComment('');
   };
 
@@ -23,18 +24,18 @@ function Content({pfUser,mainImg,setMainImg,i}){
   }
 
   // 댓글 post
-const onCommentSubmit = () =>{
-  axios.post('',{
-    comment : comment,
-  },{
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(res=>{
-    console.log(res.data)
-  })
-}
+// const onCommentSubmit = () =>{
+//   axios.post('',{
+//     comment : comment,
+//   },{
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   })
+//   .then(res=>{
+//     console.log(res.data)
+//   })
+// }
 
 // 댓글 get
   // useEffect(()=>{
@@ -122,7 +123,7 @@ const onCommentSubmit = () =>{
             />
           <button 
             className="post_comment_btn"
-            onClick={onCommentSubmit}
+            // onClick={onCommentSubmit}
             >
             <i className='bx bx-send' ></i>
           </button>

@@ -28,6 +28,8 @@ useEffect(()=>{
   })
 },[])
 
+
+
 // 검색목록
 useEffect(()=>{
   const searchBox = async ()=>{
